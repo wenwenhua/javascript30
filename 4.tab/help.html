@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="好借" />
+    <meta name="keywords" content="好借" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>tab</title>
+    <link href="index.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="common">
+                <div class="left-box fl">
+                    <ul>
+                        <li class="active tab"><a href="javascript:;">是什么？</a></li>
+                        <li class="tab"><a href="javascript:;">如何注册？</a></li>
+                        <li class="tab"><a href="javascript:;">什么是？</a></li>
+                        <li class="tab"><a href="javascript:;">哪些步骤？</a></li>
+                    </ul>
+                </div>
+                <div class="right-box fl">
+                    <ul>
+                        <li style="display:block;">
+                            <h5>是什么？</h5>
+                            <p>是什么？是什么？是什么？</p>
+                        </li>
+                        <li>
+                            <h5>如何注册？</h5>
+                            <p>如何进行注册？如何进行注册？如何进行注册？</p>
+                        </li>
+                        <li>
+                            <h5>什么是？</h5>
+                            <p>什么是？什么是？什么是？什么是？</p>
+                        </li>
+                        <li>
+                            <h5>哪些步骤？</h5>
+                            <p>哪些步骤？哪些步骤？哪些步骤？哪些步骤？哪些步骤？</p>
+                        </li>
+                    </ul>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var lis = document.querySelectorAll('.content .left-box li.tab');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function(num){
+                return function(){
+                    var spanlis = document.querySelectorAll('.content .right-box li');
+                    for (var j = 0; j < spanlis.length; j++) {
+                        spanlis[j].className = "hide";
+                        lis[j].classList.remove('active')
+                        if(j == num ){
+                            spanlis[j].className = "show";
+                            lis[j].classList.add('active');
+                        }
+                    }
+                }
+            }(i);
+        }
+    </script>
+</body>
+</html>

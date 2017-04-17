@@ -1,0 +1,137 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, bdi, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  color: #333;
+  font-size: 14px;
+  font-family: tahoma,arial,Hiragino Sans GB,"Microsoft Yahei",NSimSun,SimSun;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:700;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+img {
+  border:0;
+}
+
+li,a{
+  /*overflow:hidden;*/
+}
+
+a{
+  color:#333;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+li{
+  list-style-type:none;
+  float:left;
+}
+
+i {
+  font-style:normal;
+}
+
+p:empty {
+  display:none;
+}
+
+html,body{
+  width: 100%;
+  min-width: 1040px;
+}
+
+/**************************
+  Common State of Elements
+  **************************/
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+body {
+  background:#FFF;
+}
+.common {
+  width:1040px;
+  min-width: 1040px;
+  margin:0 auto;
+  /*overflow: hidden;*/
+}
+.content{
+  /*overflow: hidden;*/
+  min-height: 612px;
+}
+.content .left-box{
+  width: 250px;
+  background-color: #efeff4;
+}
+.content .right-box{
+  padding: 60px 50px 20px;
+  width: 790px;
+}
+.content .right-box li{
+  display: none;
+}
+.content .right-box li h5{
+  font-size: 26px;
+  font-weight: normal;
+  color: #4997ff;
+}
+.content .right-box li p{
+  font-size: 16px;
+  line-height: 2;
+  margin: 20px 0;
+}
+.content li{
+  float: none;
+}
+.content .left-box li{
+  float: none;
+  width: 100%;
+  line-height: 88px;
+  height: 90px;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+}
+.content .left-box li.active{
+  background-color: #8fbeff;
+}
+.content .left-box li.active a{
+  color: #fff;
+}
+.content .left-box li a{
+  font-size: 16px;
+}
+.hide{
+  display: none !important;
+}
+.show{
+  display: block !important;
+}
+@media screen and (max-width: 1040px) {
+  .container{
+    overflow: hidden;
+  }
+}
