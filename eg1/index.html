@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Num 1</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<!--   -->
+    <div class="keys">
+        <div data-key="49" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>1</kbd>
+            <span class="sound">Do</span>
+        </div>
+        <div data-key="50" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>2</kbd>
+            <span class="sound">Re</span>
+        </div>
+        <div data-key="51" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>3</kbd>
+            <span class="sound">Mi</span>
+        </div>
+        <div data-key="52" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>4</kbd>
+            <span class="sound">Fa</span>
+        </div>
+        <div data-key="53" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>5</kbd>
+            <span class="sound">Sol</span>
+        </div>
+        <div data-key="54" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>6</kbd>
+            <span class="sound">La</span>
+        </div>
+        <div data-key="55" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>7</kbd>
+            <span class="sound">Si</span>
+        </div>
+        <div data-key="56" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>8</kbd>
+            <span class="sound">Do</span>
+        </div>
+        <div data-key="57" class="key">
+            <!-- 它用来表示文本是从键盘上键入的。 -->
+            <kbd>9</kbd>
+            <span class="sound">Re</span>
+        </div>
+    </div>
+    <audio data-key="49" src="audio/1.ogg"></audio>
+    <audio data-key="50" src="audio/2.ogg"></audio>
+    <audio data-key="51" src="audio/3.ogg"></audio>
+    <audio data-key="52" src="audio/4.ogg"></audio>
+    <audio data-key="53" src="audio/5.ogg"></audio>
+    <audio data-key="54" src="audio/6.ogg"></audio>
+    <audio data-key="55" src="audio/7.ogg"></audio>
+    <audio data-key="56" src="audio/1+.ogg"></audio>
+    <audio data-key="57" src="audio/2+.ogg"></audio>
+    <script type="text/javascript" charset="utf-8">
+        function playSound(e){
+            // console.log(e.keyCode);
+            const audio = document.querySelector("audio[data-key='"+e.keyCode+"']");
+            const key = document.querySelector(".key[data-key='"+e.keyCode+"']");
+            // console.log(audio);
+            if (!audio) return; // stop the function
+            audio.currentTime = 0; //rewind to the start
+            audio.play();
+            key.classList.add('playing');
+        }
+        function removeTransition(e){
+            if (e.propertyName !== "transform") return;
+            this.classList.remove('playing')
+        }
+
+        const keys = document.querySelectorAll('.key');
+        // transitionend 事件会在 CSS transition 结束后触发.
+        keys.forEach(key => key.addEventListener("transitionend", removeTransition))；
+        // 键盘按下事件
+        window.addEventListener("keydown", playSound)
+    </script>
+</body>
+</html>
