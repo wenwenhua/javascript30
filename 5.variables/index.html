@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>variables JS & CSS</title>
+</head>
+<body>
+    <h2>Update CSS Variables with <span>JS</span></h2>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+        <label for="base">Base color :</label>
+        <input type="color" name="base" value="#ffc600">
+    </div>
+    <img src="http://unsplash.it/800/500?image=899">
+    <style type="text/css" media="screen">
+    /*
+    CSS变量的基本用法
+
+    声明变量：
+        element {
+          --main-bg-color: brown;
+        }
+
+    使用变量：
+        element {
+          background-color: var(--main-bg-color);
+        }
+
+    定义一个变量在:root伪类上，使用变量来减少重复的代码。
+     */
+        :root{
+            --base : #ffc600 ;
+            --spacing : 10px;
+            --blur : 10px;
+        }
+        img{
+            padding: var(--spacing);
+            background: var(--base);
+            filter: blur(var(--blur));
+        }
+        .h1{
+            color: var(--base);
+        }
+        /* css */
+        body{
+            text-align: center;
+        }
+        body{
+            background: #193549;
+            color: white;
+            font-family: 'helvetica neue', sans-serif;
+            font-weight: 100;
+            font-size: 50px
+        }
+        .controls{
+            margin-bottom: 50px;
+        }
+        a{
+            color: var(--base);
+            text-decoration: none;
+        }
+        input{
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        const inputs = document.querySelectorAll('.controls input');
+
+        function handleUpdate(){
+            // console.log(this.value);
+            /*
+            HTMLElement.dataset 属性允许我们访问所有在元素上自定义的data属性
+
+            自定义的数据属性名称是以 data- 开头的。 它必须要遵循只可以包含字母，数字和下面的字符： dash (-), dot (.), colon (:), underscore (_)的规则。此外不应包含ASCII 码大写字母。
+
+            自定义的data 属性名称转化成 DOMStringMap 的键值时会遵循下面的规则：
+                前缀  data- 被去除(包括减号)；
+                对于每个在ASCII小写字母 a到 z前面的减号 (U+002D)，减号会被去除，并且字母会转变成对应的大写字母。
+                其他字符（包含其他减号）都不发生变化
+
+            属性名称 data-abc-def 与键值 abcDef 相对应。
+             */
+            const suffix = this.dataset.sizing || '';
+            // console.log(suffix);
+            /*
+            Document.documentElement 是一个会返回文档对象（document）的根元素的只读属性（如HTML文档的 <html> 元素）。
+             */
+            document.documentElement.style.setProperty(`--${ this.name }`, this.value + suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate))
+        // inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+    </script>
+</body>
+</html>

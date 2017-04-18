@@ -16,3 +16,19 @@
 
 tab 选项卡效果
 
+#### CSS variables
+
+CSS3 的新特性，IE 和 Edge 目前都还不支持。命名写法是 --变量名，在引用这个变量时写法是 var(--变量名)。具体实例见下一条代码。
+
+所以常用于声明全局的 CSS 变量：
+
+`:root {`
+  --color: #fff;
+`}`
+
+在使用时：
+
+`img {`
+  background: var(--base);
+`}`
+
