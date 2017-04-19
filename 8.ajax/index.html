@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+    <form class="search-form">
+        <input type="text" class="search" placeholder="City or Status">
+        <ul class="suggestions">
+          <li>Find A City Or A Status</li>
+          <li></li>
+        </ul>
+      </form>
+</body>
+    <style type="text/css" media="screen">
+        html {
+          box-sizing: border-box;
+          background:#ffc600;
+          font-family:'helvetica neue';
+          font-size: 20px;
+          font-weight: 200;
+        }
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+        input {
+          width: 100%;
+          padding:20px;
+        }
+
+        .search-form {
+          max-width:400px;
+          margin:50px auto;
+        }
+
+        input.search {
+          margin: 0;
+          text-align: center;
+          outline:0;
+          border: 10px solid #F7F7F7;
+          width: 120%;
+          left: -10%;
+          position: relative;
+          top: 10px;
+          z-index: 2;
+          border-radius: 5px;
+          font-size: 40px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+        }
+
+
+        .suggestions {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          /*perspective:20px;*/
+        }
+        .suggestions li {
+          background:white;
+          list-style: none;
+          border-bottom: 1px solid #D8D8D8;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+          margin:0;
+          padding:20px;
+          transition:background 0.2s;
+          display:flex;
+          justify-content:space-between;
+          text-transform: capitalize;
+        }
+
+        .suggestions li:nth-child(even) {
+          transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+          background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+        }
+        .suggestions li:nth-child(odd) {
+          transform: perspective(100px) rotateX(-3deg) translateY(3px);
+          background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+        }
+
+        span.population {
+          font-size: 15px;
+        }
+
+        .hl {
+          background:#ffc600;
+        }
+
+        a {
+          color:black;
+          background:rgba(0,0,0,0.1);
+          text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // const endpoint = 'https://gist.githubusercontent.com/soyaine/81399bb2b24ca1bb5313e1985533c640/raw/bdf7df2cbcf70706c4a5e51a7dfb8c933ed78878/TangPoetry.json';
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+        const cities = [];
+        /*
+        全局 fetch()方法，该方法提供了一种简单，合乎逻辑的方式来跨网络异步获取资源。
+
+        从 fetch()返回的 Promise 将不会拒绝HTTP错误状态, 即使响应是一个 HTTP 404 或 500。相反，它会正常解决 (其中ok状态设置为false),  并且仅在网络故障时或任何阻止请求完成时，它才会拒绝。
+        默认情况下, fetch在服务端不会发送或接收任何 cookies, 如果站点依赖于维护一个用户会话，则导致未经认证的请求(要发送 cookies，必须发送凭据头).
+         */
+        fetch(endpoint)
+            .then(blod => blod.json())
+            /*
+            扩展语法允许在需要多个参数（用于函数调用）或多个元素（用于数组文本）或多个变量（用于解构分配）的位置扩展表达式。
+            var arr1 = [0, 1, 2];
+            var arr2 = [3, 4, 5];
+            arr1.push(...arr2);
+             */
+            .then(data => cities.push(...data));
+
+        function findMsg(wordToMatch, cities){
+            return cities.filter(place => {
+                // here we need to figure out if the city or state matches what was searched
+                const regex = new RegExp(wordToMatch, 'gi')
+                return place.city.match(regex) || place.state.match(regex);
+            });
+        }
+        // 数字每三位加个逗号
+        function numberWithCommas(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        }
+
+        function displayMatches(){
+            // console.log(this.value);
+            const matchArray = findMsg(this.value, cities);
+            // console.log(matchArray);
+            const html = matchArray.map(place => {
+                const regex = new RegExp(this.value, 'gi');
+                const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+                const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+
+                return `<li> <span class="name">${cityName}, ${stateName}</span> <span class="population">${numberWithCommas(place.population)}</span> </li>`;
+            }).join('');
+            // console.log(html);
+            suggestions.innerHTML = html;
+        }
+
+        const searchInput = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+
+        searchInput.addEventListener('change', displayMatches)
+        searchInput.addEventListener('keyup', displayMatches)
+    </script>
+</html>
