@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" charset="utf-8">
+  const people = [
+        { name: 'Wes', year: 1988 },
+        { name: 'Kait', year: 1986 },
+        { name: 'Irv', year: 1970 },
+        { name: 'Lux', year: 2015 },
+      ];
+      const comments = [
+        { text: 'Love this!', id: 523423 },
+        { text: 'Super good', id: 823423 },
+        { text: 'You are the best', id: 2039842 },
+        { text: 'Ramen is my fav food ever', id: 123523 },
+        { text: 'Nice Nice Nice!', id: 542328 }
+      ];
+
+      // some() & every()
+      const adult = people.some(function(peo){
+        var data = (new Date()).getFullYear();
+        if (data - peo.year >= 18) {
+          return true;
+        }
+      })
+      console.log(adult);
+
+      const isAdult = people.some(person =>  ((new Date()).getFullYear()) - person.year >= 18)
+      console.log(isAdult);
+
+      const allAdult = people.every(person =>  ((new Date()).getFullYear()) - person.year >= 18)
+      console.log(allAdult);
+
+      // find()
+      // find the comment with ID of 823423
+      const that = comments.find(commont => commont.id === 823423);
+      console.log(that);
+
+      // findIndex()
+      // find the comment with this ID
+      // delete the comment with the ID of 823423
+      const index = comments.findIndex(comment => comment.id === 823423);
+      console.log(index);
+      // comments.splice(index,1)
+      console.log(comments);
+
+      const newComments = [ ...comments.slice(0,index), ...comments.slice(index + 1)]
+
+
+</script>
+</html>
