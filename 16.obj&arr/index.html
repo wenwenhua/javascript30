@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    // start with strings, numbers and booleans
+    // The let statement declares a block scope local variable, optionally initializing it to a value.(块范围的局部变量)
+    // 用来声明变量。它的用法类似于 var，但是所声明的变量，只在 let 命令所在的代码块内有效。
+    // for 循环的计数器，就很合适使用 let 命令。
+    // 不存在变量提升
+    // let 不允许在相同作用域内，重复声明同一个变量
+
+    // const 声明创建一个只读的常量。这不意味着常量指向的值不可变，而是变量标识符的值只能赋值一次
+    // 在声明所在的块级作用域内有效。
+    // const 命令也不存在提升，只能在声明的位置后面使用。
+    // const 声明的常量，也与 let 一样不可重复声明
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age = 200;
+    console.log(age, age2);
+
+    let name = 'Wes';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'wesley'
+    console.log(name, name2);
+
+
+    // Let's say we have an array
+    // 常量 players 储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把 players 指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    // and we want to make a copy of it.
+    const team = players;
+    console.log(players, team);
+    // You might think we can just do something like this:
+    // team[3] = 'Lux';
+    // however what happens when we update that array?
+
+    // now here is the problem!
+    //
+    // oh no - we have edited the original array too!
+    //
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    // So, how do we fix this?
+    // 方法一：We take a copy instead!  浅拷贝
+    const team2 = players.slice();
+    // 方法二：create a new array and concat the old one in
+    // concat() 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
+    const team3 = [].concat(players);
+    // 方法三： use the new ES6 Spread
+    const team4 = [...players];
+    team4[5] = 'hreeese hawww';
+    console.log(team4);
+    // 方法四：
+    // Array.from() 方法从一个类似数组或可迭代对象创建一个新的数组实例。
+    const team5 = Array.from(players)
+    // now when we update it, the original one isn't changed
+    // The same thing goes for objects, let's say we have a person object
+    // with Objects
+    const person = {
+        name : "Wes Bos",
+        age : 80
+    }
+
+    // and think we make a copy:
+    const caption = person;
+    caption.number = 99;
+    // how do we take a copy instead?
+    // Object.assign() 方法用于将所有可枚举的属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+    const cap2 = Object.assign({}, person, {number : 99, age : 12});
+    console.log(cap2);
+    // We will hopefully soon see the object ...spread
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+        name : 'Wes',
+        age : 100,
+        social : {
+            twitter : '@wesbos',
+            facebook : 'wesbos.developer'
+        }
+    };
+    console.log(wes);
+    const dev = Object.assign({}, wes);
+    /*  */
+    const dev2 = JSON.parse(JSON.stringigy(wes));
+  </script>
+
+</body>
+</html>
