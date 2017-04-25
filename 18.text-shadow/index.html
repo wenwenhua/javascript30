@@ -37,16 +37,23 @@
 
   function shadow(e){
     // in ES6 syntax
-    const {offsetWidth: width, offsetHeight: height } = hero;
+    const { offsetWidth: width, offsetHeight: height } = hero;
     // 等价于
     /*const width = hero.offsetWidth;
     const height = hero.offsetHeight;*/
-    let {offsetX : x, offsetY : y} = e
+    let { offsetX : x, offsetY : y } = e
     // 等价于
     /*const x = e.offsetX;
     const y = e.offsetY;*/
+    // console.log(x,y);
+    console.log(e);
 
     if (this !== e.target) {
+      // this 是 绑定事件的对象
+      // e.target 是事件的触发对象
+      // 事件冒泡
+      console.log(e);
+      // 事件由hero的子元素 h1 触发时
       x = x + e.target.offsetLeft;
       y = y + e.target.offsetTop;
     }
