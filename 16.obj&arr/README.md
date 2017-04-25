@@ -68,9 +68,16 @@ console.log(dev);
 console.log(dev2);
 ```
 
-![image](log.png)
+<img src="log.jpg" width="300px" />
 
-​	JSON对象的 parse() 方法可以将
+​	先使用JSON对象的 stringify() 方法可以将 javascript 对象序列化为JSON字符串，然后使用JSON对象的 parse() 将JSON字符串反序列成JS对象，这种方式的缺点也显而易见，深复制之后对象都会变成Object。
+
+#### 4.使用第三方库实现深复制
+
+​	① jQuery 的 extend() / clone()
+
+​	② Underscore 的 _.clone()
+​	③ lodash 的 _.clone() / _.cloneDeep()
 
 ​	
 
