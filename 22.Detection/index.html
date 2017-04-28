@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Detection</title>
+</head>
+<body>
+
+  <div class="words" contenteditable>
+  </div>
+
+<script>
+//Web Speech API
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const recognition = new SpeechRecognition();
+// controls whether interim results should be returned (true) or not (false.) Interim results are results that are not yet final
+  recognition.interimResults = true;
+
+  let p = document.createElement('p')
+  const words = document.querySelector('.words');
+  words.appendChild(p);
+
+  // represents an event handler that will run when the speech recognition service returns a result — a word or phrase has been positively recognized and this has been communicated back to the app
+  recognition.addEventListener("result", e => {
+      // console.log(e.results);
+      // 识别语音
+      const transcript = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('')
+
+      //将语音识别的结果返回并添加到p标签
+      p.textContent = transcript;
+        // a Boolean that states whether this result is final (true) or not (false) — if so, then this is the final time this result will be returned; if not, then this result is an interim result, and may be updated later on.
+      if (e.results[0].isFinal) {
+          p.document.createElement('p');
+          words.appendChild(p);
+      }
+
+      if (transcript.includes('unicorn')) {
+        console.log('unicorn');
+      }
+  })
+
+  recognition.addEventListener("end", recognition.start);
+
+  recognition.start();
+</script>
+
+
+  <style>
+    html {
+      font-size: 10px;
+    }
+    body {
+      background:#ffc600;
+      font-family: 'helvetica neue';
+      font-weight: 200;
+      font-size: 20px;
+    }
+    .words {
+      max-width:500px;
+      margin:50px auto;
+      background:white;
+      border-radius:5px;
+      box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+      padding:1rem 2rem 1rem 5rem;
+      background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+      background-size: 100% 3rem;
+      position: relative;
+      line-height:3rem;
+    }
+    p {
+      margin: 0 0 3rem;
+    }
+    .words:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      top: 0;
+      left: 30px;
+      bottom: 0;
+      border: 1px solid;
+      border-color: transparent #efe4e4;
+    }
+  </style>
+
+</body>
+</html>
