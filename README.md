@@ -1,6 +1,6 @@
 ## javascript30
 
-/**[wesbos / JavaScript30](https://github.com/wesbos/JavaScript30)的javascript30挑战，课程视频地址[https://JavaScript30.com](https://javascript30.com/)。**/
+**[wesbos / JavaScript30](https://github.com/wesbos/JavaScript30)的javascript30挑战，课程视频地址[https://JavaScript30.com](https://javascript30.com/)。**
 
 [01 - JavaScript Drum Kit](https://wenwenhua.github.io/javascript30/01 - JavaScript Drum Kit) - js模拟点击鼓点效果
 
