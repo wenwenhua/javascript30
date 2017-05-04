@@ -15,7 +15,7 @@
 [11 - Custom Video Player](https://wenwenhua.github.io/javascript30/11 - Custom Video Player)
 [12 - Key Sequence Detection](https://wenwenhua.github.io/javascript30/12 - Key Sequence Detection)
 [13 - Slide in on Scroll](https://wenwenhua.github.io/javascript30/13 - Slide in on Scroll)
-[14 - JavaScript References VS Copying	daywaywhat](https://wenwenhua.github.io/javascript30/14 - JavaScript References VS Copying   daywaywhat)
+[14 - JavaScript References VS Copying	](https://wenwenhua.github.io/javascript30/14 - JavaScript References VS Copying)
 [15 - LocalStorage](https://wenwenhua.github.io/javascript30/15 - LocalStorage)
 [16 - Mouse Move Shadow](https://wenwenhua.github.io/javascript30/16 - Mouse Move Shadow)
 [17 - Sort Without Articles](https://wenwenhua.github.io/javascript30/17 - Sort Without Articles)
@@ -26,11 +26,11 @@
 [22 - Follow Along Link Highlighter](https://wenwenhua.github.io/javascript30/22 - Follow Along Link Highlighter)
 [23 - Speech Synthesis](https://wenwenhua.github.io/javascript30/23 - Speech Synthesis)
 [24 - Sticky Nav](https://wenwenhua.github.io/javascript30/24 - Sticky Nav)
-[25 - Event Capture, Propagation, Bubbling and Once](https://wenwenhua.github.io/javascript30/25 - Event Capture, Propagation, Bubbling and Once)
+[25 - Event Capture, Propagation, Bubbling and Once](https://wenwenhua.github.io/javascript30/25 - Event Capture, Propagation, Bubbling)
 [26 - Stripe Follow Along Nav](https://wenwenhua.github.io/javascript30/26 - Stripe Follow Along Nav)
 [27 - Click and Drag](https://wenwenhua.github.io/javascript30/27 - Click and Drag)
 [28 - Video Speed Controller](https://wenwenhua.github.io/javascript30/28 - Video Speed Controller)
-[29 - Countdown Timer	Typo](https://wenwenhua.github.io/javascript30/29 - Countdown Timer Typo)
+[29 - Countdown Timer	Typo](https://wenwenhua.github.io/javascript30/29 - Countdown Timer)
 [30 - Whack A Mole](https://wenwenhua.github.io/javascript30/30 - Whack A Mole)
 
 可以由键盘上的1,2,3,4,5,6,7,8,9个按键来实现1,2,3,4,5,6,7,1,2等9个声调，可以实现简易的琴键功能，可以将音乐按照琴谱来实现游戏。（注：不包括小键盘的数字按键）
