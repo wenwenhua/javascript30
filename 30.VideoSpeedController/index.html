@@ -8,7 +8,7 @@
 <body>
 
   <div class="wrapper">
-    <video class="flex" width="765" height="430" src="https://www.dropbox.com/s/nf6jfkwck1glsyo/12%20-%20flex-wrapping-and-columns.mp4?dl=1" loop controls></video>
+    <video class="flex" width="765" height="430" src="flex-wrapping-and-columns.mp4" loop controls></video>
     <!-- 视频进度条 -->
     <div class="speed">
       <div class="speed-bar">1¡Á</div>
@@ -19,6 +19,22 @@
     const speed = document.querySelector('.speed');
     const bar = speed.querySelector('.speed-bar');
     const video = document.querySelector('.flex')
+
+    function handleMove(e){
+         const y = e.pageY - this.offsetTop;
+         const percent = y / this.offsetHeight;
+         const min = 0.4;
+         const max = 4;
+         const height = Math.round(percent * 100) + '%';
+         const playbackRate = percent * (max - min) + min;
+         bar.style.height = height;
+         bar.textContent = playbackRate.toFixed(2) + '%';
+         // console.log(y);
+         video.playbackRate = playbackRate;
+    }
+
+    speed.addEventListener('mousemove', handleMove);
+    // speed.addEventListener('mousemove', handleMove);
 
 </script>
 </body>
