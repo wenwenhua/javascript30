@@ -1,6 +1,6 @@
 ### 打鼹鼠游戏
 
-**[效果预览](https://wenwenhua.github.io/javascript30/30%20-%20Whack%20A%20Mole/) ：**点击图中的 start 按钮，鼹鼠出洞，在鼹鼠出洞时鼠标点击鼹鼠则加分。
+[效果预览](https://wenwenhua.github.io/javascript30/30%20-%20Whack%20A%20Mole/) ：点击图中的 start 按钮，鼹鼠出洞，在鼹鼠出洞时鼠标点击鼹鼠则加分。
 
 **代码中的知识点**
 
